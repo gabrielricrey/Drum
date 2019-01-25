@@ -34,6 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59A526F421F242D500031C49 /* snare1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = snare1.aif; sourceTree = "<group>"; };
+		59A526F521F242D500031C49 /* hihat1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = hihat1.aif; sourceTree = "<group>"; };
+		59A526F621F242D500031C49 /* kick2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick2.aif; sourceTree = "<group>"; };
+		59A526F721F242D500031C49 /* kick1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick1.aif; sourceTree = "<group>"; };
+		59A526F821F242D500031C49 /* snare2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = snare2.aif; sourceTree = "<group>"; };
 		59BCDBD421E3592300D83E24 /* Drum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59BCDBD721E3592300D83E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59BCDBD921E3592300D83E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +79,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		594EF35821F8A32B00128EBB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				59A526F521F242D500031C49 /* hihat1.aif */,
+				59A526F721F242D500031C49 /* kick1.aif */,
+				59A526F621F242D500031C49 /* kick2.aif */,
+				59A526F421F242D500031C49 /* snare1.aif */,
+				59A526F821F242D500031C49 /* snare2.aif */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		594EF35921F8A33600128EBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		594EF35A21F8A34000128EBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59BCDBDB21E3592300D83E24 /* Main.storyboard */,
+				59BCDBDE21E3592400D83E24 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		594EF35B21F8A34600128EBB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59BCDBD721E3592300D83E24 /* AppDelegate.swift */,
+				59BCDBD921E3592300D83E24 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		59BCDBCB21E3592300D83E24 = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +139,10 @@
 		59BCDBD621E3592300D83E24 /* Drum */ = {
 			isa = PBXGroup;
 			children = (
-				59BCDBD721E3592300D83E24 /* AppDelegate.swift */,
-				59BCDBD921E3592300D83E24 /* ViewController.swift */,
-				59BCDBDB21E3592300D83E24 /* Main.storyboard */,
-				59BCDBDE21E3592400D83E24 /* Assets.xcassets */,
+				594EF35B21F8A34600128EBB /* Controller */,
+				594EF35A21F8A34000128EBB /* View */,
+				594EF35921F8A33600128EBB /* Model */,
+				594EF35821F8A32B00128EBB /* Sounds */,
 				59BCDBE021E3592400D83E24 /* LaunchScreen.storyboard */,
 				59BCDBE321E3592400D83E24 /* Info.plist */,
 			);
@@ -433,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HM32T2ZS9N;
 				INFOPLIST_FILE = Drum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,7 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Gabriel.Drum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HM32T2ZS9N;
 				INFOPLIST_FILE = Drum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Gabriel.Drum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
