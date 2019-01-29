@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var snareArray: [UIButton]!
     @IBOutlet var hatArray: [UIButton]!
     @IBOutlet weak var bpmLabel: UILabel!
-    
+    @IBOutlet weak var soundPropertiesView: UIView!
     
     let soundUrl1 = Bundle.main.url(forResource: "kick", withExtension: "wav")
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundPropertiesView.isHidden = true
+        soundPropertiesView.layer.cornerRadius = 20
+        soundPropertiesView.layer.borderWidth = 1.0
+        soundPropertiesView.layer.borderColor = UIColor.black.cgColor
+
         
     
     }
@@ -49,12 +54,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonPressed1(_ sender: UIButton) {
-        
         fillSoundButtonImages(sender)
     }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
-        
         changePlayButtonImage(sender)
         if sender.isSelected {
             play()
@@ -64,132 +67,97 @@ class ViewController: UIViewController {
     }
     
     func fillSoundButtonImages(_ sender:UIButton) {
-        
             sender.isSelected = !sender.isSelected
         }
         
     func changePlayButtonImage(_ sender:UIButton) {
-        
         sender.isSelected = !sender.isSelected
     }
     
     @IBAction func bassSound(_ sender: UIButton) {
-        
-        
-        
         do {
             audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
         }
-            
         catch {
             print(error)
         }
-        
         audioPlayer1.play()
-        
     }
     
     @IBAction func snareSound(_ sender: UIButton) {
-        
-        
-        
         do {
             audioPlayer2 = try AVAudioPlayer(contentsOf: soundUrl2!)
         }
-            
         catch {
             print(error)
         }
-        
         audioPlayer2.play()
-        
     }
     
     @IBAction func hihatSound(_ sender: UIButton) {
-        
-        
-        
         do {
             audioPlayer3 = try AVAudioPlayer(contentsOf: soundUrl3!)
         }
-            
         catch {
             print(error)
         }
-        
         audioPlayer3.play()
-        
     }
     
     func play() {
-        
         checkFilled()
-      
     }
     
-   
-    
     func pause() {
-        
         timer?.invalidate()
         index = 0
-        
     }
     
     @objc func checkFilled() {
         timer?.invalidate()
 
-        
         if kickArray[index].isSelected {
-            
             do {
                 audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
             }
-                
             catch {
                 print(error)
             }
-            
             audioPlayer1.play()
-            
         }
         
         if snareArray[index].isSelected {
-            
             do {
                 audioPlayer2 = try AVAudioPlayer(contentsOf: soundUrl2!)
             }
-                
             catch {
                 print(error)
             }
-            
             audioPlayer2.play()
-            
         }
         
         if hatArray[index].isSelected {
-            
             do {
                 audioPlayer3 = try AVAudioPlayer(contentsOf: soundUrl3!)
             }
-                
             catch {
                 print(error)
             }
-            
             audioPlayer3.play()
-            
         }
         
         if index < hatArray.count - 1 {
             index += 1
         } else {
             index = 0
-        
         }
-        
         timer = Timer.scheduledTimer(timeInterval: ((1.0/(Double(bpm)/60)) / 4), target: self, selector: #selector(ViewController.checkFilled), userInfo: nil, repeats: false)
+    }
+    
+    @IBAction func showSoundPropertiesView(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            soundPropertiesView.isHidden = !soundPropertiesView.isHidden
+        }
         
     }
     

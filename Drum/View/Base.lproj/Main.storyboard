@@ -435,29 +435,35 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chP-eL-lhn">
                                 <rect key="frame" x="48" y="152" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <state key="normal" image="snare"/>
                                 <connections>
                                     <action selector="snareSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MiS-SB-Bs0"/>
+                                    <outletCollection property="gestureRecognizers" destination="kDX-ML-hyP" appends="YES" id="bfW-jC-bwo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-cs-fV0">
                                 <rect key="frame" x="48" y="207" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <state key="normal" image="hihat"/>
                                 <connections>
                                     <action selector="hihatSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QYn-7I-1VM"/>
+                                    <outletCollection property="gestureRecognizers" destination="6yu-sT-5pK" appends="YES" id="dIY-GL-NNW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-gQ-Khw">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-gQ-Khw" userLabel="KickButton">
                                 <rect key="frame" x="48" y="97" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <state key="normal" image="kick"/>
                                 <connections>
-                                    <action selector="bassSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y43-jH-QQR"/>
+                                    <action selector="bassSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rch-65-hdE"/>
+                                    <outletCollection property="gestureRecognizers" destination="mjf-Fh-2L3" appends="YES" id="rol-eR-UPx"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM">
-                                <rect key="frame" x="219.00000000000003" y="20" width="337" height="55"/>
+                                <rect key="frame" x="238" y="20" width="337" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Ar-mUA">
@@ -482,6 +488,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
+                                <rect key="frame" x="185" y="83" width="442" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.22487254609999999" green="0.27706783810000002" blue="0.48292750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -494,6 +505,7 @@
                     </view>
                     <connections>
                         <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
+                        <outlet property="soundPropertiesView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>
                         <outletCollection property="kickArray" destination="Opr-iJ-ep5" collectionClass="NSMutableArray" id="4oF-ky-TKG"/>
                         <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="Mmy-Bi-FNK"/>
                         <outletCollection property="kickArray" destination="o1b-97-orc" collectionClass="NSMutableArray" id="tEC-MN-tK3"/>
@@ -545,6 +557,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="mjf-Fh-2L3">
+                    <connections>
+                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="SKb-5z-g1P"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kDX-ML-hyP">
+                    <connections>
+                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="ASa-85-LVJ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6yu-sT-5pK">
+                    <connections>
+                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="oQd-Jc-ciq"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="145.56650246305421" y="85.599999999999994"/>
         </scene>
