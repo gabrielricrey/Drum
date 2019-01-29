@@ -432,20 +432,6 @@
                                     <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jF-Iw-qWO"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="194" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM">
-                                <rect key="frame" x="254" y="20" width="304" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Ar-mUA">
-                                        <rect key="frame" x="0.0" y="16.666666666666668" width="55" height="22.000000000000004"/>
-                                        <state key="normal" image="minus"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2j-GW-vkq">
-                                        <rect key="frame" x="249" y="0.0" width="55" height="55"/>
-                                        <state key="normal" image="plus"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chP-eL-lhn">
                                 <rect key="frame" x="48" y="152" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -470,6 +456,32 @@
                                     <action selector="bassSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y43-jH-QQR"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM">
+                                <rect key="frame" x="219.00000000000003" y="20" width="337" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Ar-mUA">
+                                        <rect key="frame" x="0.0" y="16.666666666666668" width="55" height="22.000000000000004"/>
+                                        <state key="normal" image="minus"/>
+                                        <connections>
+                                            <action selector="decreaseBpmByOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a9w-Kq-Eqe"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMr-OB-zIf">
+                                        <rect key="frame" x="135" y="3.6666666666666679" width="67" height="48"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                                        <color key="textColor" red="0.9192116857" green="0.56436929680000003" blue="0.35231630460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2j-GW-vkq">
+                                        <rect key="frame" x="282" y="0.0" width="55" height="55"/>
+                                        <state key="normal" image="plus"/>
+                                        <connections>
+                                            <action selector="increaseBpmByOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="65S-6G-Usu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -481,9 +493,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
                         <outletCollection property="kickArray" destination="Opr-iJ-ep5" collectionClass="NSMutableArray" id="4oF-ky-TKG"/>
                         <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="Mmy-Bi-FNK"/>
-                        <outletCollection property="hatArray" destination="4li-U3-hFX" collectionClass="NSMutableArray" id="ShD-US-6wd"/>
                         <outletCollection property="kickArray" destination="o1b-97-orc" collectionClass="NSMutableArray" id="tEC-MN-tK3"/>
                         <outletCollection property="kickArray" destination="9dk-bT-312" collectionClass="NSMutableArray" id="bTa-lI-c84"/>
                         <outletCollection property="kickArray" destination="USn-Km-jZX" collectionClass="NSMutableArray" id="Sjo-FQ-FfI"/>
@@ -494,13 +506,11 @@
                         <outletCollection property="kickArray" destination="YtE-Zy-iQ2" collectionClass="NSMutableArray" id="BRQ-ox-8bx"/>
                         <outletCollection property="kickArray" destination="1F7-7f-uM0" collectionClass="NSMutableArray" id="8WW-Wh-qhY"/>
                         <outletCollection property="kickArray" destination="zNE-lm-tOw" collectionClass="NSMutableArray" id="A1x-Su-WZL"/>
-                        <outletCollection property="kickArray" destination="zNE-lm-tOw" collectionClass="NSMutableArray" id="DIp-x3-UYs"/>
                         <outletCollection property="kickArray" destination="xcU-Qw-BUj" collectionClass="NSMutableArray" id="pk4-5V-5MR"/>
                         <outletCollection property="kickArray" destination="IBo-gN-fdx" collectionClass="NSMutableArray" id="JJx-X5-u5w"/>
                         <outletCollection property="kickArray" destination="4uR-8a-ViF" collectionClass="NSMutableArray" id="8fx-U2-GL6"/>
                         <outletCollection property="kickArray" destination="7jd-wS-prW" collectionClass="NSMutableArray" id="oTK-w0-b5W"/>
                         <outletCollection property="kickArray" destination="x1f-s7-HTe" collectionClass="NSMutableArray" id="hGe-YD-4Ac"/>
-                        <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="L2I-qw-4vZ"/>
                         <outletCollection property="snareArray" destination="F4B-04-wD1" collectionClass="NSMutableArray" id="VSc-ym-1hx"/>
                         <outletCollection property="snareArray" destination="Iuu-lt-OXW" collectionClass="NSMutableArray" id="O20-hB-txq"/>
                         <outletCollection property="snareArray" destination="BmI-f3-gFx" collectionClass="NSMutableArray" id="Qe7-JX-e8q"/>
