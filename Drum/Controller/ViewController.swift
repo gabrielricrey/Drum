@@ -37,6 +37,12 @@ class ViewController: UIViewController {
         soundPropertiesView.layer.cornerRadius = 20
         soundPropertiesView.layer.borderWidth = 1.0
         soundPropertiesView.layer.borderColor = UIColor.black.cgColor
+        
+        for i in 0 ... 15 {
+            kickArray[i].layer.borderWidth = 2
+            snareArray[i].layer.borderWidth = 2
+            hatArray[i].layer.borderWidth = 2
+        }
 
         
     
@@ -110,12 +116,28 @@ class ViewController: UIViewController {
     
     func pause() {
         timer?.invalidate()
+        if index > 0 {
+        progressBarRestoreColor(index - 1)
+        } else {
+        progressBarRestoreColor(kickArray.count - 1)
+        }
         index = 0
     }
     
     @objc func checkFilled() {
         timer?.invalidate()
-
+        var lastIndex = 0
+        
+        if index > 0 {
+            lastIndex = index - 1
+        } else if index == 0 {
+            lastIndex = kickArray.count - 1
+        }
+        
+        progressBarRestoreColor(lastIndex)
+        progressBarSetColor(index)
+        
+        
         if kickArray[index].isSelected {
             do {
                 audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
@@ -151,7 +173,23 @@ class ViewController: UIViewController {
         } else {
             index = 0
         }
+    
         timer = Timer.scheduledTimer(timeInterval: ((1.0/(Double(bpm)/60)) / 4), target: self, selector: #selector(ViewController.checkFilled), userInfo: nil, repeats: false)
+        
+    }
+    
+    func progressBarSetColor(_ index:Int) {
+        
+        kickArray[index].layer.borderColor = UIColor.red.cgColor
+        snareArray[index].layer.borderColor = UIColor.red.cgColor
+        hatArray[index].layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func progressBarRestoreColor(_ index:Int) {
+        
+        kickArray[index].layer.borderColor = UIColor.black.cgColor
+        snareArray[index].layer.borderColor = UIColor.black.cgColor
+        hatArray[index].layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func showSoundPropertiesView(_ sender: UILongPressGestureRecognizer) {
