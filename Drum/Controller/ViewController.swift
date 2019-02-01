@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var hatArray: [UIButton]!
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var soundPropertiesView: UIView!
+    @IBOutlet weak var bpmDisplay: UIView!
     
     let soundUrl1 = Bundle.main.url(forResource: "kick", withExtension: "wav")
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
@@ -38,6 +39,11 @@ class ViewController: UIViewController {
         soundPropertiesView.layer.borderWidth = 1.0
         soundPropertiesView.layer.borderColor = UIColor.black.cgColor
         
+        bpmDisplay.layer.borderWidth = 2
+        bpmDisplay.layer.cornerRadius = 20
+        
+        bpmDisplay.backgroundColor = UIColor.red
+        
         for i in 0 ... 15 {
             kickArray[i].layer.borderWidth = 2
             snareArray[i].layer.borderWidth = 2
@@ -49,13 +55,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func decreaseBpmByOne(_ sender: UIButton) {
+        
+        if bpm > 60 {
         bpm -= 1
         bpmLabel.text = String(bpm)
+        }
         
     }
     @IBAction func increaseBpmByOne(_ sender: UIButton) {
+        if bpm < 150 {
         bpm += 1
         bpmLabel.text = String(bpm)
+        } 
         
     }
     
@@ -197,6 +208,15 @@ class ViewController: UIViewController {
             soundPropertiesView.isHidden = !soundPropertiesView.isHidden
         }
         
+    }
+    
+    
+    @IBAction func reset(_ sender: UIButton) {
+        for i in 0 ... 15 {
+            kickArray[i].isSelected = false
+            snareArray[i].isSelected = false
+            hatArray[i].isSelected = false
+        }
     }
     
 }

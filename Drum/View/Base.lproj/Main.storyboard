@@ -462,37 +462,60 @@
                                     <outletCollection property="gestureRecognizers" destination="mjf-Fh-2L3" appends="YES" id="rol-eR-UPx"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM">
-                                <rect key="frame" x="238" y="20" width="337" height="55"/>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
+                                <rect key="frame" x="185" y="83" width="442" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.22487254609999999" green="0.27706783810000002" blue="0.48292750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-vp-dfG">
+                                <rect key="frame" x="185" y="288" width="78" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2zf-nf-fvK"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM" userLabel="Top Container">
+                                <rect key="frame" x="36" y="20" width="740" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Ar-mUA">
-                                        <rect key="frame" x="0.0" y="16.666666666666668" width="55" height="22.000000000000004"/>
-                                        <state key="normal" image="minus"/>
+                                        <rect key="frame" x="0.0" y="17.666666666666668" width="240" height="22.000000000000004"/>
+                                        <state key="normal" image="minus">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="decreaseBpmByOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a9w-Kq-Eqe"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMr-OB-zIf">
-                                        <rect key="frame" x="135" y="3.6666666666666679" width="67" height="48"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
-                                        <color key="textColor" red="0.9192116857" green="0.56436929680000003" blue="0.35231630460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtK-lR-foj" userLabel="BPM Display">
+                                        <rect key="frame" x="250" y="0.0" width="240" height="57"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMr-OB-zIf">
+                                                <rect key="frame" x="86.666666666666686" y="5.3333333333333321" width="67" height="46.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                                <color key="textColor" red="0.9192116857" green="0.56436929680000003" blue="0.35231630460000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="FMr-OB-zIf" firstAttribute="centerY" secondItem="BtK-lR-foj" secondAttribute="centerY" id="74S-vG-msC"/>
+                                            <constraint firstItem="FMr-OB-zIf" firstAttribute="centerX" secondItem="BtK-lR-foj" secondAttribute="centerX" id="c0n-jR-vUx"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2j-GW-vkq">
-                                        <rect key="frame" x="282" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="500" y="1" width="240" height="55"/>
                                         <state key="normal" image="plus"/>
                                         <connections>
                                             <action selector="increaseBpmByOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="65S-6G-Usu"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
-                                <rect key="frame" x="185" y="83" width="442" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.22487254609999999" green="0.27706783810000002" blue="0.48292750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -504,25 +527,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bpmDisplay" destination="BtK-lR-foj" id="lk2-rw-k8L"/>
                         <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
                         <outlet property="soundPropertiesView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>
-                        <outletCollection property="kickArray" destination="Opr-iJ-ep5" collectionClass="NSMutableArray" id="4oF-ky-TKG"/>
                         <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="Mmy-Bi-FNK"/>
-                        <outletCollection property="kickArray" destination="o1b-97-orc" collectionClass="NSMutableArray" id="tEC-MN-tK3"/>
-                        <outletCollection property="kickArray" destination="9dk-bT-312" collectionClass="NSMutableArray" id="bTa-lI-c84"/>
-                        <outletCollection property="kickArray" destination="USn-Km-jZX" collectionClass="NSMutableArray" id="Sjo-FQ-FfI"/>
-                        <outletCollection property="kickArray" destination="yzQ-PF-cco" collectionClass="NSMutableArray" id="LNB-pb-Zz4"/>
-                        <outletCollection property="kickArray" destination="dxh-mL-EDC" collectionClass="NSMutableArray" id="abe-WX-bIS"/>
-                        <outletCollection property="kickArray" destination="Hbi-Yd-Q6j" collectionClass="NSMutableArray" id="4mX-hS-VNs"/>
-                        <outletCollection property="kickArray" destination="CbM-m5-M5z" collectionClass="NSMutableArray" id="3VE-DG-8GO"/>
-                        <outletCollection property="kickArray" destination="YtE-Zy-iQ2" collectionClass="NSMutableArray" id="BRQ-ox-8bx"/>
-                        <outletCollection property="kickArray" destination="1F7-7f-uM0" collectionClass="NSMutableArray" id="8WW-Wh-qhY"/>
-                        <outletCollection property="kickArray" destination="zNE-lm-tOw" collectionClass="NSMutableArray" id="A1x-Su-WZL"/>
-                        <outletCollection property="kickArray" destination="xcU-Qw-BUj" collectionClass="NSMutableArray" id="pk4-5V-5MR"/>
-                        <outletCollection property="kickArray" destination="IBo-gN-fdx" collectionClass="NSMutableArray" id="JJx-X5-u5w"/>
-                        <outletCollection property="kickArray" destination="4uR-8a-ViF" collectionClass="NSMutableArray" id="8fx-U2-GL6"/>
-                        <outletCollection property="kickArray" destination="7jd-wS-prW" collectionClass="NSMutableArray" id="oTK-w0-b5W"/>
-                        <outletCollection property="kickArray" destination="x1f-s7-HTe" collectionClass="NSMutableArray" id="hGe-YD-4Ac"/>
                         <outletCollection property="snareArray" destination="F4B-04-wD1" collectionClass="NSMutableArray" id="VSc-ym-1hx"/>
                         <outletCollection property="snareArray" destination="Iuu-lt-OXW" collectionClass="NSMutableArray" id="O20-hB-txq"/>
                         <outletCollection property="snareArray" destination="BmI-f3-gFx" collectionClass="NSMutableArray" id="Qe7-JX-e8q"/>
@@ -554,6 +562,22 @@
                         <outletCollection property="hatArray" destination="8tH-IZ-0JQ" collectionClass="NSMutableArray" id="EAp-8R-Ag7"/>
                         <outletCollection property="hatArray" destination="TU4-4s-kXo" collectionClass="NSMutableArray" id="b6K-x1-lrH"/>
                         <outletCollection property="hatArray" destination="phm-v6-3dC" collectionClass="NSMutableArray" id="l9q-Qu-2iW"/>
+                        <outletCollection property="kickArray" destination="Opr-iJ-ep5" collectionClass="NSMutableArray" id="4oF-ky-TKG"/>
+                        <outletCollection property="kickArray" destination="o1b-97-orc" collectionClass="NSMutableArray" id="tEC-MN-tK3"/>
+                        <outletCollection property="kickArray" destination="9dk-bT-312" collectionClass="NSMutableArray" id="bTa-lI-c84"/>
+                        <outletCollection property="kickArray" destination="USn-Km-jZX" collectionClass="NSMutableArray" id="Sjo-FQ-FfI"/>
+                        <outletCollection property="kickArray" destination="yzQ-PF-cco" collectionClass="NSMutableArray" id="LNB-pb-Zz4"/>
+                        <outletCollection property="kickArray" destination="dxh-mL-EDC" collectionClass="NSMutableArray" id="abe-WX-bIS"/>
+                        <outletCollection property="kickArray" destination="Hbi-Yd-Q6j" collectionClass="NSMutableArray" id="4mX-hS-VNs"/>
+                        <outletCollection property="kickArray" destination="CbM-m5-M5z" collectionClass="NSMutableArray" id="3VE-DG-8GO"/>
+                        <outletCollection property="kickArray" destination="YtE-Zy-iQ2" collectionClass="NSMutableArray" id="BRQ-ox-8bx"/>
+                        <outletCollection property="kickArray" destination="1F7-7f-uM0" collectionClass="NSMutableArray" id="8WW-Wh-qhY"/>
+                        <outletCollection property="kickArray" destination="zNE-lm-tOw" collectionClass="NSMutableArray" id="A1x-Su-WZL"/>
+                        <outletCollection property="kickArray" destination="xcU-Qw-BUj" collectionClass="NSMutableArray" id="pk4-5V-5MR"/>
+                        <outletCollection property="kickArray" destination="IBo-gN-fdx" collectionClass="NSMutableArray" id="JJx-X5-u5w"/>
+                        <outletCollection property="kickArray" destination="4uR-8a-ViF" collectionClass="NSMutableArray" id="8fx-U2-GL6"/>
+                        <outletCollection property="kickArray" destination="7jd-wS-prW" collectionClass="NSMutableArray" id="oTK-w0-b5W"/>
+                        <outletCollection property="kickArray" destination="x1f-s7-HTe" collectionClass="NSMutableArray" id="hGe-YD-4Ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
