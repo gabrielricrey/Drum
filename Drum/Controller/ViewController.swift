@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     var index = 0
     var bpm = 120
     var timer:Timer?
+    var i:Timer?
     
     
     
@@ -49,25 +50,59 @@ class ViewController: UIViewController {
             snareArray[i].layer.borderWidth = 2
             hatArray[i].layer.borderWidth = 2
         }
-
-        
-    
     }
     
     @IBAction func decreaseBpmByOne(_ sender: UIButton) {
         
         if bpm > 60 {
-        bpm -= 1
-        bpmLabel.text = String(bpm)
+            bpm -= 1
+            bpmLabel.text = String(bpm)
         }
         
     }
     @IBAction func increaseBpmByOne(_ sender: UIButton) {
         if bpm < 150 {
-        bpm += 1
-        bpmLabel.text = String(bpm)
-        } 
+            bpm += 1
+            bpmLabel.text = String(bpm)
+        }
         
+    }
+    @IBAction func increaseBpm(_ sender: UILongPressGestureRecognizer) {
+        
+        switch sender.state {
+        case .began:
+            i = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(ViewController.increaseBpmFast), userInfo: nil, repeats: true)
+        case .ended:
+            i?.invalidate()
+        default:
+            return
+       
+        }
+    }
+    
+    @IBAction func decreaseBpm(_ sender: UILongPressGestureRecognizer) {
+
+        switch sender.state {
+        case .began:
+            i = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(ViewController.decreaseBpmFast), userInfo: nil, repeats: true)
+        case .ended:
+            i?.invalidate()
+        default:
+            return
+        }
+    }
+    
+    @objc func increaseBpmFast() {
+        if bpm < 150 {
+            bpm += 1
+            bpmLabel.text = String(bpm)
+        }
+    }
+    @objc func decreaseBpmFast() {
+        if bpm > 60 {
+            bpm -= 1
+            bpmLabel.text = String(bpm)
+        }
     }
     
     @IBAction func buttonPressed1(_ sender: UIButton) {
@@ -84,9 +119,9 @@ class ViewController: UIViewController {
     }
     
     func fillSoundButtonImages(_ sender:UIButton) {
-            sender.isSelected = !sender.isSelected
-        }
-        
+        sender.isSelected = !sender.isSelected
+    }
+    
     func changePlayButtonImage(_ sender:UIButton) {
         sender.isSelected = !sender.isSelected
     }
@@ -128,9 +163,9 @@ class ViewController: UIViewController {
     func pause() {
         timer?.invalidate()
         if index > 0 {
-        progressBarRestoreColor(index - 1)
+            progressBarRestoreColor(index - 1)
         } else {
-        progressBarRestoreColor(kickArray.count - 1)
+            progressBarRestoreColor(kickArray.count - 1)
         }
         index = 0
     }
@@ -184,7 +219,7 @@ class ViewController: UIViewController {
         } else {
             index = 0
         }
-    
+        
         timer = Timer.scheduledTimer(timeInterval: ((1.0/(Double(bpm)/60)) / 4), target: self, selector: #selector(ViewController.checkFilled), userInfo: nil, repeats: false)
         
     }
