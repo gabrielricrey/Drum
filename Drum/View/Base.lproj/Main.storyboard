@@ -532,6 +532,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1O-nP-DMs" secondAttribute="trailing" constant="70" id="7wC-EG-gTv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W1O-nP-DMs" secondAttribute="bottom" constant="100" id="LQf-Ri-Uac"/>
@@ -539,6 +540,9 @@
                             <constraint firstItem="W1O-nP-DMs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="gF9-RI-5sd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3X7-ak-Bst" appends="YES" id="CGR-Hd-qzD"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bpmDisplay" destination="BtK-lR-foj" id="lk2-rw-k8L"/>
@@ -621,6 +625,11 @@
                         <action selector="increaseBpm:" destination="BYZ-38-t0r" id="pwF-ay-d2J"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="3X7-ak-Bst" userLabel="Close Sound Properties View">
+                    <connections>
+                        <action selector="hideSoundPropertiesView:" destination="BYZ-38-t0r" id="tcA-HL-vpA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="145.56650246305421" y="85.599999999999994"/>
         </scene>

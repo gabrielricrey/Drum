@@ -24,9 +24,12 @@ class ViewController: UIViewController {
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
     let soundUrl3 = Bundle.main.url(forResource: "hihat", withExtension: "wav")
     
-    var audioPlayer1:AVAudioPlayer!
+    var audioPlayer1: AVAudioPlayer!
     var audioPlayer2:AVAudioPlayer!
     var audioPlayer3:AVAudioPlayer!
+    var volumeAudioPlayer1:Float = 0.5
+    var volumeAudioPlayer2:Float = 0.5
+    var volumeAudioPlayer3:Float = 0.5
     var index = 0
     var bpm = 120
     var timer:Timer?
@@ -52,9 +55,10 @@ class ViewController: UIViewController {
             hatArray[i].layer.borderWidth = 2
         }
         
-        if let b = audioPlayer1.volume {
-         print(audioPlayer1.volume)
+        if let b = audioPlayer1 {
+            print(b.volume)
         }
+        
     }
     
     @IBAction func decreaseBpmByOne(_ sender: UIButton) {
@@ -81,12 +85,12 @@ class ViewController: UIViewController {
             i?.invalidate()
         default:
             return
-       
+            
         }
     }
     
     @IBAction func decreaseBpm(_ sender: UILongPressGestureRecognizer) {
-
+        
         switch sender.state {
         case .began:
             i = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(ViewController.decreaseBpmFast), userInfo: nil, repeats: true)
@@ -132,32 +136,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func bassSound(_ sender: UIButton) {
-        do {
-            audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
-        }
-        catch {
-            print(error)
-        }
+        
         audioPlayer1.play()
     }
     
     @IBAction func snareSound(_ sender: UIButton) {
-        do {
-            audioPlayer2 = try AVAudioPlayer(contentsOf: soundUrl2!)
-        }
-        catch {
-            print(error)
-        }
+        
         audioPlayer2.play()
     }
     
     @IBAction func hihatSound(_ sender: UIButton) {
-        do {
-            audioPlayer3 = try AVAudioPlayer(contentsOf: soundUrl3!)
-        }
-        catch {
-            print(error)
-        }
+        
         audioPlayer3.play()
     }
     
@@ -192,16 +181,19 @@ class ViewController: UIViewController {
         if kickArray[index].isSelected {
             do {
                 audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
+                audioPlayer1.setVolume(volumeAudioPlayer1, fadeDuration: 0)
             }
             catch {
                 print(error)
             }
             audioPlayer1.play()
+            
         }
         
         if snareArray[index].isSelected {
             do {
                 audioPlayer2 = try AVAudioPlayer(contentsOf: soundUrl2!)
+                audioPlayer2.setVolume(volumeAudioPlayer2, fadeDuration: 0)
             }
             catch {
                 print(error)
@@ -212,6 +204,7 @@ class ViewController: UIViewController {
         if hatArray[index].isSelected {
             do {
                 audioPlayer3 = try AVAudioPlayer(contentsOf: soundUrl3!)
+                audioPlayer3.setVolume(volumeAudioPlayer3, fadeDuration: 0)
             }
             catch {
                 print(error)
@@ -243,32 +236,42 @@ class ViewController: UIViewController {
         hatArray[index].layer.borderColor = UIColor.black.cgColor
     }
     
+    var track:Int = 0
     @IBAction func showSoundPropertiesView(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             soundPropertiesView.isHidden = !soundPropertiesView.isHidden
         }
         
-        changeVolume(sender)
-//        switch sender.view?.tag {
-//        case 50:
-//            volumeSlider.value = audioPlayer1.volume
-//            audioPlayer1.volume = volumeSlider.value
-//        case 51:
-//            volumeSlider.value = audioPlayer2.volume
-//            audioPlayer2.volume = volumeSlider.value
-//        case 52:
-//            volumeSlider.value = audioPlayer3.volume
-//            audioPlayer3.volume = volumeSlider.value
-//        default: return
-//        }
+        if let b = sender.view?.tag {
+            track = b
+        }
+        
     }
+    
+    @IBAction func hideSoundPropertiesView(_ sender: UITapGestureRecognizer) {
+        soundPropertiesView.isHidden = true
+    }
+    
     
     @IBAction func changeVolume(_ sender: Any) {
+        print(track)
+        print(volumeSlider.value)
+        switch track {
+        case 50:
+            
+            volumeAudioPlayer1 = volumeSlider.value
+            print("volume: \( audioPlayer1.volume)")
+        case 51:
+            
+            volumeAudioPlayer2 = volumeSlider.value
+        case 52:
+            
+            volumeAudioPlayer3 = volumeSlider.value
+        default: return
+        }
         
-        audioPlayer1.volume = volumeSlider.value
+        
     }
-    
-    
     
     @IBAction func reset(_ sender: UIButton) {
         for i in 0 ... 15 {
