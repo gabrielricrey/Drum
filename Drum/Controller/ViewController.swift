@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var soundPropertiesView: UIView!
     @IBOutlet weak var bpmDisplay: UIView!
+    @IBOutlet weak var volumeSlider: UISlider!
     
     let soundUrl1 = Bundle.main.url(forResource: "kick", withExtension: "wav")
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
@@ -49,6 +50,10 @@ class ViewController: UIViewController {
             kickArray[i].layer.borderWidth = 2
             snareArray[i].layer.borderWidth = 2
             hatArray[i].layer.borderWidth = 2
+        }
+        
+        if let b = audioPlayer1.volume {
+         print(audioPlayer1.volume)
         }
     }
     
@@ -243,7 +248,26 @@ class ViewController: UIViewController {
             soundPropertiesView.isHidden = !soundPropertiesView.isHidden
         }
         
+        changeVolume(sender)
+//        switch sender.view?.tag {
+//        case 50:
+//            volumeSlider.value = audioPlayer1.volume
+//            audioPlayer1.volume = volumeSlider.value
+//        case 51:
+//            volumeSlider.value = audioPlayer2.volume
+//            audioPlayer2.volume = volumeSlider.value
+//        case 52:
+//            volumeSlider.value = audioPlayer3.volume
+//            audioPlayer3.volume = volumeSlider.value
+//        default: return
+//        }
     }
+    
+    @IBAction func changeVolume(_ sender: Any) {
+        
+        audioPlayer1.volume = volumeSlider.value
+    }
+    
     
     
     @IBAction func reset(_ sender: UIButton) {

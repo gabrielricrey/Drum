@@ -432,7 +432,7 @@
                                     <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jF-Iw-qWO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chP-eL-lhn" userLabel="Snare Button">
+                            <button opaque="NO" tag="51" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chP-eL-lhn" userLabel="Snare Button">
                                 <rect key="frame" x="48" y="152" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -442,7 +442,7 @@
                                     <outletCollection property="gestureRecognizers" destination="kDX-ML-hyP" appends="YES" id="bfW-jC-bwo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-cs-fV0" userLabel="Hat Button">
+                            <button opaque="NO" tag="52" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-cs-fV0" userLabel="Hat Button">
                                 <rect key="frame" x="48" y="207" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -452,7 +452,7 @@
                                     <outletCollection property="gestureRecognizers" destination="6yu-sT-5pK" appends="YES" id="dIY-GL-NNW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-gQ-Khw" userLabel="Kick Button">
+                            <button opaque="NO" tag="50" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-gQ-Khw" userLabel="Kick Button">
                                 <rect key="frame" x="48" y="97" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -465,6 +465,15 @@
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
                                 <rect key="frame" x="185" y="83" width="442" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-XC-mNS" userLabel="Volume">
+                                        <rect key="frame" x="139" y="136" width="165" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="8iP-iK-V0c"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
                                 <color key="backgroundColor" red="0.22487254609999999" green="0.27706783810000002" blue="0.48292750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-vp-dfG">
@@ -535,6 +544,7 @@
                         <outlet property="bpmDisplay" destination="BtK-lR-foj" id="lk2-rw-k8L"/>
                         <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
                         <outlet property="soundPropertiesView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>
+                        <outlet property="volumeSlider" destination="IIO-XC-mNS" id="nkU-Kv-z1B"/>
                         <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="Mmy-Bi-FNK"/>
                         <outletCollection property="snareArray" destination="F4B-04-wD1" collectionClass="NSMutableArray" id="VSc-ym-1hx"/>
                         <outletCollection property="snareArray" destination="Iuu-lt-OXW" collectionClass="NSMutableArray" id="O20-hB-txq"/>
