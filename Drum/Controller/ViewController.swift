@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     var timer:Timer?
     var i:Timer?
     
-    
-    
+    var savedBeats = [String: [Bool]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         soundPropertiesView.isHidden = true
@@ -273,7 +273,71 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func reset(_ sender: UIButton) {
+    @IBAction func saveBeat(_ sender: UIButton) {
+        var beats = [Bool]()
+        
+        
+        for i in 0...47 {
+            if i < 16 {
+                if kickArray[i].isSelected {
+                    beats.append(true)
+                } else {
+                    beats.append(false)
+                }
+            } else if i < 32 {
+                if snareArray[i - 16].isSelected {
+                    beats.append(true)
+                } else {
+                    beats.append(false)
+                }
+            } else {
+                if hatArray[i - 32].isSelected {
+                    beats.append(true)
+                } else {
+                    beats.append(false)
+                }
+            }
+        }
+        
+        savedBeats["Test"] = beats
+        UserDefaults.standard.set(savedBeats, forKey: "1")
+        UserDefaults.standard.synchronize()
+    }
+    
+    @IBAction func loadBeat(_ sender: UIButton) {
+        reset(nil)
+        let b = UserDefaults.standard.object(forKey: "1") as? [String:[Bool]]
+        
+        if let b = b {
+            let beatsArray = b["Test"]
+            if let beatsArray = beatsArray {
+                
+                
+                
+                for i in 0...47 {
+                    if i < 16 {
+                        if beatsArray[i] == true {
+                            kickArray[i].isSelected = true
+                        }
+                    } else if i < 32 {
+                        if beatsArray[i] == true {
+                            snareArray[i - 16].isSelected = true
+                        }
+                        
+                    } else {
+                        if beatsArray[i] == true {
+                            hatArray[i - 32].isSelected = true
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    @IBAction func reset(_ sender: UIButton?) {
         for i in 0 ... 15 {
             kickArray[i].isSelected = false
             snareArray[i].isSelected = false

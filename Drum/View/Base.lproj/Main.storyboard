@@ -462,19 +462,27 @@
                                     <outletCollection property="gestureRecognizers" destination="mjf-Fh-2L3" appends="YES" id="rol-eR-UPx"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
-                                <rect key="frame" x="185" y="83" width="442" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
+                                <rect key="frame" x="296" y="142.66666666666666" width="220" height="90"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-XC-mNS" userLabel="Volume">
-                                        <rect key="frame" x="139" y="136" width="165" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-XC-mNS" userLabel="Volume">
+                                        <rect key="frame" x="27.666666666666686" y="30.333333333333343" width="165" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="J81-wV-lZV"/>
+                                            <constraint firstAttribute="height" constant="29" id="o5l-co-wL5"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="changeVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="8iP-iK-V0c"/>
                                         </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" red="0.22487254609999999" green="0.27706783810000002" blue="0.48292750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="IIO-XC-mNS" firstAttribute="centerY" secondItem="Kn9-KN-ePq" secondAttribute="centerY" id="aKC-hx-eqy"/>
+                                    <constraint firstItem="IIO-XC-mNS" firstAttribute="centerX" secondItem="Kn9-KN-ePq" secondAttribute="centerX" id="dOL-t2-ycd"/>
+                                    <constraint firstAttribute="width" constant="220" id="tND-Nc-UEB"/>
+                                    <constraint firstAttribute="height" constant="90" id="yfZ-lG-oDD"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-vp-dfG">
                                 <rect key="frame" x="185" y="288" width="78" height="47"/>
@@ -530,14 +538,38 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhn-NG-X60" userLabel="Save">
+                                <rect key="frame" x="538" y="288" width="64" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.16414438907591911" green="0.55169999599456787" blue="0.044455498238926125" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveBeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1xO-8D-uQ1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-Oe-sru" userLabel="Load">
+                                <rect key="frame" x="634" y="288" width="64" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Load">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadBeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1G3-rU-s2K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1O-nP-DMs" secondAttribute="trailing" constant="70" id="7wC-EG-gTv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W1O-nP-DMs" secondAttribute="bottom" constant="100" id="LQf-Ri-Uac"/>
+                            <constraint firstItem="Kn9-KN-ePq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QTU-Xe-jYj"/>
                             <constraint firstItem="W1O-nP-DMs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="e2F-08-ibJ"/>
                             <constraint firstItem="W1O-nP-DMs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="gF9-RI-5sd"/>
+                            <constraint firstItem="Kn9-KN-ePq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mWF-EL-Xg1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
