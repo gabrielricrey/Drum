@@ -16,9 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet var snareArray: [UIButton]!
     @IBOutlet var hatArray: [UIButton]!
     @IBOutlet weak var bpmLabel: UILabel!
-    @IBOutlet weak var soundPropertiesView: UIView!
+    @IBOutlet weak var volumeView: UIView!
     @IBOutlet weak var bpmDisplay: UIView!
     @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var kickButton: UIButton!
+    @IBOutlet weak var snareButton: UIButton!
+    @IBOutlet weak var hatButton: UIButton!
     
     let soundUrl1 = Bundle.main.url(forResource: "kick", withExtension: "wav")
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
@@ -27,26 +30,28 @@ class ViewController: UIViewController {
     var audioPlayer1: AVAudioPlayer!
     var audioPlayer2:AVAudioPlayer!
     var audioPlayer3:AVAudioPlayer!
+    
     var volumeAudioPlayer1:Float = 0.5
     var volumeAudioPlayer2:Float = 0.5
     var volumeAudioPlayer3:Float = 0.5
     var index = 0
     var bpm = 120
+    var track:Int = 0
     var timer:Timer?
     var i:Timer?
     
     var savedBeats = [String: [Bool]]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        soundPropertiesView.isHidden = true
-        soundPropertiesView.layer.cornerRadius = 20
-        soundPropertiesView.layer.borderWidth = 1.0
-        soundPropertiesView.layer.borderColor = UIColor.black.cgColor
+        
+        volumeView.isHidden = true
+        volumeView.layer.cornerRadius = 20
+        volumeView.layer.borderWidth = 1.0
+        volumeView.layer.borderColor = UIColor.black.cgColor
         
         bpmDisplay.layer.borderWidth = 2
         bpmDisplay.layer.cornerRadius = 20
-        
         bpmDisplay.backgroundColor = UIColor.red
         
         for i in 0 ... 15 {
@@ -54,11 +59,6 @@ class ViewController: UIViewController {
             snareArray[i].layer.borderWidth = 2
             hatArray[i].layer.borderWidth = 2
         }
-        
-        if let b = audioPlayer1 {
-            print(b.volume)
-        }
-        
     }
     
     @IBAction func decreaseBpmByOne(_ sender: UIButton) {
@@ -135,19 +135,12 @@ class ViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func bassSound(_ sender: UIButton) {
+    @IBAction func volumeView(_ sender: UIButton) {
+        volumeView.isHidden = !volumeView.isHidden
+        addOrRemoveBorderFromChosenTrack(sender)
+        track = sender.tag
+        setSliderValueToAudioPlayerVolume()
         
-        audioPlayer1.play()
-    }
-    
-    @IBAction func snareSound(_ sender: UIButton) {
-        
-        audioPlayer2.play()
-    }
-    
-    @IBAction func hihatSound(_ sender: UIButton) {
-        
-        audioPlayer3.play()
     }
     
     func play() {
@@ -236,41 +229,23 @@ class ViewController: UIViewController {
         hatArray[index].layer.borderColor = UIColor.black.cgColor
     }
     
-    var track:Int = 0
-    @IBAction func showSoundPropertiesView(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            soundPropertiesView.isHidden = !soundPropertiesView.isHidden
-        }
-        
-        if let b = sender.view?.tag {
-            track = b
-        }
-        
-    }
-    
-    @IBAction func hideSoundPropertiesView(_ sender: UITapGestureRecognizer) {
-        soundPropertiesView.isHidden = true
+    @IBAction func hideVolumeViewWhenTapAnyWhere(_ sender: UITapGestureRecognizer) {
+        volumeView.isHidden = true
+        removeBorderChosenTrack()
     }
     
     
     @IBAction func changeVolume(_ sender: Any) {
-        print(track)
-        print(volumeSlider.value)
+       
         switch track {
         case 50:
-            
             volumeAudioPlayer1 = volumeSlider.value
-            print("volume: \( audioPlayer1.volume)")
         case 51:
-            
             volumeAudioPlayer2 = volumeSlider.value
         case 52:
-            
             volumeAudioPlayer3 = volumeSlider.value
         default: return
         }
-        
-        
     }
     
     @IBAction func saveBeat(_ sender: UIButton) {
@@ -342,6 +317,38 @@ class ViewController: UIViewController {
             kickArray[i].isSelected = false
             snareArray[i].isSelected = false
             hatArray[i].isSelected = false
+        }
+    }
+    func addOrRemoveBorderFromChosenTrack(_ sender:UIButton) {
+        if volumeView.isHidden == false {
+            addBorderChosenTrack(sender)
+        } else {
+            removeBorderChosenTrack()
+        }
+    }
+    func addBorderChosenTrack(_ sender:UIButton) {
+        sender.layer.borderWidth = 2
+        sender.layer.cornerRadius = 14
+        sender.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func removeBorderChosenTrack() {
+        kickButton.layer.borderWidth = 0
+        snareButton.layer.borderWidth = 0
+        hatButton.layer.borderWidth = 0
+        
+    }
+    
+    func setSliderValueToAudioPlayerVolume() {
+        
+        switch track {
+        case 50:
+            volumeSlider.value = audioPlayer1.volume
+        case 51:
+            volumeSlider.value = audioPlayer2.volume
+        case 52:
+            volumeSlider.value = audioPlayer3.volume
+        default: return
         }
     }
     

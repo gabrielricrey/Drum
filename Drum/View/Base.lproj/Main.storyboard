@@ -438,8 +438,7 @@
                                 <gestureRecognizers/>
                                 <state key="normal" image="snare"/>
                                 <connections>
-                                    <action selector="snareSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MiS-SB-Bs0"/>
-                                    <outletCollection property="gestureRecognizers" destination="kDX-ML-hyP" appends="YES" id="bfW-jC-bwo"/>
+                                    <action selector="volumeView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qvv-OS-lIe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="52" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-cs-fV0" userLabel="Hat Button">
@@ -448,8 +447,7 @@
                                 <gestureRecognizers/>
                                 <state key="normal" image="hihat"/>
                                 <connections>
-                                    <action selector="hihatSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QYn-7I-1VM"/>
-                                    <outletCollection property="gestureRecognizers" destination="6yu-sT-5pK" appends="YES" id="dIY-GL-NNW"/>
+                                    <action selector="volumeView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tpb-ei-eNR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="50" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-gQ-Khw" userLabel="Kick Button">
@@ -458,8 +456,7 @@
                                 <gestureRecognizers/>
                                 <state key="normal" image="kick"/>
                                 <connections>
-                                    <action selector="bassSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rch-65-hdE"/>
-                                    <outletCollection property="gestureRecognizers" destination="mjf-Fh-2L3" appends="YES" id="rol-eR-UPx"/>
+                                    <action selector="volumeView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rch-65-hdE"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kn9-KN-ePq">
@@ -536,7 +533,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhn-NG-X60" userLabel="Save">
                                 <rect key="frame" x="538" y="288" width="64" height="47"/>
@@ -561,7 +557,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.27450980392156865" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1O-nP-DMs" secondAttribute="trailing" constant="70" id="7wC-EG-gTv"/>
@@ -579,8 +575,11 @@
                     <connections>
                         <outlet property="bpmDisplay" destination="BtK-lR-foj" id="lk2-rw-k8L"/>
                         <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
-                        <outlet property="soundPropertiesView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>
+                        <outlet property="hatButton" destination="6f7-cs-fV0" id="F6z-SR-cl2"/>
+                        <outlet property="kickButton" destination="REc-gQ-Khw" id="JKu-e5-TUK"/>
+                        <outlet property="snareButton" destination="chP-eL-lhn" id="DGc-FM-jVC"/>
                         <outlet property="volumeSlider" destination="IIO-XC-mNS" id="nkU-Kv-z1B"/>
+                        <outlet property="volumeView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>
                         <outletCollection property="snareArray" destination="L5C-c8-kAf" collectionClass="NSMutableArray" id="Mmy-Bi-FNK"/>
                         <outletCollection property="snareArray" destination="F4B-04-wD1" collectionClass="NSMutableArray" id="VSc-ym-1hx"/>
                         <outletCollection property="snareArray" destination="Iuu-lt-OXW" collectionClass="NSMutableArray" id="O20-hB-txq"/>
@@ -632,21 +631,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="mjf-Fh-2L3" userLabel="Kick Long Press Recognizer">
-                    <connections>
-                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="SKb-5z-g1P"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kDX-ML-hyP" userLabel="Snare Long Press Recognizer">
-                    <connections>
-                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="ASa-85-LVJ"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6yu-sT-5pK" userLabel="Hat Long Press Recognizer">
-                    <connections>
-                        <action selector="showSoundPropertiesView:" destination="BYZ-38-t0r" id="oQd-Jc-ciq"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ol0-WX-V5x" userLabel="BPM - Long Press Recognizer">
                     <connections>
                         <action selector="decreaseBpm:" destination="BYZ-38-t0r" id="NpH-G3-aFC"/>
@@ -659,7 +643,7 @@
                 </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="3X7-ak-Bst" userLabel="Close Sound Properties View">
                     <connections>
-                        <action selector="hideSoundPropertiesView:" destination="BYZ-38-t0r" id="tcA-HL-vpA"/>
+                        <action selector="hideVolumeViewWhenTapAnyWhere:" destination="BYZ-38-t0r" id="tcA-HL-vpA"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
