@@ -542,7 +542,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveBeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1xO-8D-uQ1"/>
+                                    <action selector="displaySaveAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1xO-8D-uQ1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-Oe-sru" userLabel="Load">
@@ -553,9 +553,49 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="loadBeat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1G3-rU-s2K"/>
+                                    <action selector="displayLoadPickerView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1G3-rU-s2K"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Mi-Oh-sDj" userLabel="Picker View View">
+                                <rect key="frame" x="0.0" y="230" width="812" height="145"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CPT-Nm-QaM">
+                                        <rect key="frame" x="0.0" y="0.0" width="812" height="145"/>
+                                        <subviews>
+                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJF-gS-MkM">
+                                                <rect key="frame" x="0.0" y="-10" width="812" height="28"/>
+                                                <items>
+                                                    <barButtonItem title="Done" width="40" id="IGR-o0-Rgl">
+                                                        <connections>
+                                                            <action selector="hidePickerView:" destination="BYZ-38-t0r" id="hf8-Zr-jeV"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                </items>
+                                            </toolbar>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7l-TJ-WjM">
+                                                <rect key="frame" x="0.0" y="28" width="812" height="117"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </pickerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gJF-gS-MkM" secondAttribute="trailing" id="6Js-5i-eMa"/>
+                                            <constraint firstItem="C7l-TJ-WjM" firstAttribute="leading" secondItem="CPT-Nm-QaM" secondAttribute="leading" id="Cxu-Qh-EKK"/>
+                                            <constraint firstAttribute="trailing" secondItem="C7l-TJ-WjM" secondAttribute="trailing" id="S64-jh-yc4"/>
+                                            <constraint firstItem="gJF-gS-MkM" firstAttribute="leading" secondItem="CPT-Nm-QaM" secondAttribute="leading" id="yZj-g6-DW2"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="CPT-Nm-QaM" secondAttribute="bottom" id="2Q8-pa-xaW"/>
+                                    <constraint firstAttribute="trailing" secondItem="CPT-Nm-QaM" secondAttribute="trailing" id="S5Z-f7-B0l"/>
+                                    <constraint firstAttribute="bottom" secondItem="CPT-Nm-QaM" secondAttribute="bottom" id="Wb2-I2-TNk"/>
+                                    <constraint firstItem="CPT-Nm-QaM" firstAttribute="leading" secondItem="9Mi-Oh-sDj" secondAttribute="leading" id="b6f-2S-tsz"/>
+                                    <constraint firstAttribute="trailing" secondItem="CPT-Nm-QaM" secondAttribute="trailing" id="byM-mV-Kag"/>
+                                    <constraint firstItem="CPT-Nm-QaM" firstAttribute="top" secondItem="9Mi-Oh-sDj" secondAttribute="top" id="eZJ-Cs-ySQ"/>
+                                    <constraint firstItem="CPT-Nm-QaM" firstAttribute="leading" secondItem="9Mi-Oh-sDj" secondAttribute="leading" id="f77-uM-mPO"/>
+                                    <constraint firstItem="CPT-Nm-QaM" firstAttribute="top" secondItem="9Mi-Oh-sDj" secondAttribute="top" id="l9J-rU-dQW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980390000002" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
@@ -563,9 +603,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1O-nP-DMs" secondAttribute="trailing" constant="70" id="7wC-EG-gTv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W1O-nP-DMs" secondAttribute="bottom" constant="100" id="LQf-Ri-Uac"/>
                             <constraint firstItem="Kn9-KN-ePq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QTU-Xe-jYj"/>
+                            <constraint firstAttribute="trailing" secondItem="9Mi-Oh-sDj" secondAttribute="trailing" id="WtU-Vs-uJK"/>
                             <constraint firstItem="W1O-nP-DMs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="e2F-08-ibJ"/>
                             <constraint firstItem="W1O-nP-DMs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="gF9-RI-5sd"/>
+                            <constraint firstAttribute="bottom" secondItem="9Mi-Oh-sDj" secondAttribute="bottom" id="gd1-GX-hGo"/>
+                            <constraint firstItem="9Mi-Oh-sDj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="lpx-pc-tF0"/>
                             <constraint firstItem="Kn9-KN-ePq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mWF-EL-Xg1"/>
+                            <constraint firstItem="9Mi-Oh-sDj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wow-NU-KXg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -577,6 +621,8 @@
                         <outlet property="bpmLabel" destination="FMr-OB-zIf" id="WbK-NX-vUH"/>
                         <outlet property="hatButton" destination="6f7-cs-fV0" id="F6z-SR-cl2"/>
                         <outlet property="kickButton" destination="REc-gQ-Khw" id="JKu-e5-TUK"/>
+                        <outlet property="pickerView" destination="C7l-TJ-WjM" id="ljT-FW-pkX"/>
+                        <outlet property="pickerViewView" destination="9Mi-Oh-sDj" id="ZRn-A5-gg6"/>
                         <outlet property="snareButton" destination="chP-eL-lhn" id="DGc-FM-jVC"/>
                         <outlet property="volumeSlider" destination="IIO-XC-mNS" id="nkU-Kv-z1B"/>
                         <outlet property="volumeView" destination="Kn9-KN-ePq" id="ZxX-sB-vEq"/>

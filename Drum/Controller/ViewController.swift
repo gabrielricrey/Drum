@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
     @IBOutlet var kickArray: [UIButton]!
@@ -22,11 +22,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var kickButton: UIButton!
     @IBOutlet weak var snareButton: UIButton!
     @IBOutlet weak var hatButton: UIButton!
+    @IBOutlet weak var pickerViewView: UIView!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     
     let soundUrl1 = Bundle.main.url(forResource: "kick", withExtension: "wav")
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
     let soundUrl3 = Bundle.main.url(forResource: "hihat", withExtension: "wav")
     
+    var beatNameField:UITextField?
+    var savedBeatsList = [String]()
     var audioPlayer1: AVAudioPlayer!
     var audioPlayer2:AVAudioPlayer!
     var audioPlayer3:AVAudioPlayer!
@@ -40,15 +45,24 @@ class ViewController: UIViewController {
     var timer:Timer?
     var i:Timer?
     
-    var savedBeats = [String: [Bool]]()
+    var savedBeats: [String: [Bool]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        savedBeats = UserDefaults.standard.object(forKey: "1") as? [String:[Bool]]
+        if savedBeats == nil {
+            savedBeats = [String: [Bool]]()
+        }
+        savedBeatsList = Array(savedBeats!.keys)
+        print(savedBeatsList)
+        
         
         volumeView.isHidden = true
         volumeView.layer.cornerRadius = 20
         volumeView.layer.borderWidth = 1.0
         volumeView.layer.borderColor = UIColor.black.cgColor
+        
         
         bpmDisplay.layer.borderWidth = 2
         bpmDisplay.layer.cornerRadius = 20
@@ -236,7 +250,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func changeVolume(_ sender: Any) {
-       
+        
         switch track {
         case 50:
             volumeAudioPlayer1 = volumeSlider.value
@@ -248,9 +262,21 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func saveBeat(_ sender: UIButton) {
-        var beats = [Bool]()
+    @IBAction func displaySaveAlert(_ sender: UIButton) {
         
+        let saveAlert = UIAlertController(title: "Enter name of beat", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: self.saveBeat)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        saveAlert.addTextField(configurationHandler: beatTextField)
+        saveAlert.addAction(okAction)
+        saveAlert.addAction(cancelAction)
+        self.present(saveAlert, animated: true)
+        
+    }
+    
+    func saveBeat(alert: UIAlertAction) {
+        
+        var beats = [Bool]()
         
         for i in 0...47 {
             if i < 16 {
@@ -274,45 +300,37 @@ class ViewController: UIViewController {
             }
         }
         
-        savedBeats["Test"] = beats
-        UserDefaults.standard.set(savedBeats, forKey: "1")
-        UserDefaults.standard.synchronize()
-    }
-    
-    @IBAction func loadBeat(_ sender: UIButton) {
-        reset(nil)
-        let b = UserDefaults.standard.object(forKey: "1") as? [String:[Bool]]
-        
-        if let b = b {
-            let beatsArray = b["Test"]
-            if let beatsArray = beatsArray {
-                
-                
-                
-                for i in 0...47 {
-                    if i < 16 {
-                        if beatsArray[i] == true {
-                            kickArray[i].isSelected = true
-                        }
-                    } else if i < 32 {
-                        if beatsArray[i] == true {
-                            snareArray[i - 16].isSelected = true
-                        }
-                        
-                    } else {
-                        if beatsArray[i] == true {
-                            hatArray[i - 32].isSelected = true
-                        }
-                    }
-                }
+        if let beatNameField = beatNameField {
+            if let beatNameField = beatNameField.text {
+                savedBeats![beatNameField] = beats
+                savedBeatsList = Array(savedBeats!.keys)
+                 print("\(beatNameField)")
             }
         }
         
+
+        UserDefaults.standard.set(savedBeats, forKey: "1")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    func beatTextField(textfield: UITextField) {
+        beatNameField = textfield
+        beatNameField?.placeholder = "..."
+    }
+    
+    @IBAction func displayLoadPickerView(_ sender: UIButton) {
+        pickerViewView.isHidden = false
+        pickerView.delegate = self
+
+    }
+    
+    @IBAction func hidePickerView(_ sender: UIBarButtonItem) {
+        pickerViewView.isHidden = true
     }
     
     
-    
-    @IBAction func reset(_ sender: UIButton?) {
+    @IBAction func reset(_ sender: Any) {
         for i in 0 ... 15 {
             kickArray[i].isSelected = false
             snareArray[i].isSelected = false
@@ -349,6 +367,53 @@ class ViewController: UIViewController {
         case 52:
             volumeSlider.value = audioPlayer3.volume
         default: return
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return savedBeatsList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return savedBeatsList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        reset(pickerView)
+        let b = savedBeats
+        
+        if let b = b {
+            let beatsArray = b[savedBeatsList[row]]
+            if let beatsArray = beatsArray {
+                
+                
+                
+                for i in 0...47 {
+                    if i < 16 {
+                        if beatsArray[i] == true {
+                            kickArray[i].isSelected = true
+                        }
+                    } else if i < 32 {
+                        if beatsArray[i] == true {
+                            snareArray[i - 16].isSelected = true
+                        }
+                        
+                    } else {
+                        if beatsArray[i] == true {
+                            hatArray[i - 32].isSelected = true
+                        }
+                    }
+                }
+            }
         }
     }
     
