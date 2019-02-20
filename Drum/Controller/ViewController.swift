@@ -30,6 +30,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     let soundUrl2 = Bundle.main.url(forResource: "snare", withExtension: "wav")
     let soundUrl3 = Bundle.main.url(forResource: "hihat", withExtension: "wav")
     
+    let nameString = NSLocalizedString("enter_beat_name", comment: "")
+    let cancelString = NSLocalizedString("cancel", comment: "")
+    
     var beatNameField:UITextField?
     var savedBeatsList = [String]()
     var audioPlayer1: AVAudioPlayer!
@@ -266,9 +269,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func displaySaveAlert(_ sender: UIButton) {
         
-        let saveAlert = UIAlertController(title: "Enter name of beat", message: nil, preferredStyle: .alert)
+        
+        
+        let saveAlert = UIAlertController(title: nameString, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: self.saveBeat)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: cancelString, style: .cancel, handler: nil)
         saveAlert.addTextField(configurationHandler: beatTextField)
         saveAlert.addAction(okAction)
         saveAlert.addAction(cancelAction)
@@ -318,7 +323,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func beatTextField(textfield: UITextField) {
         beatNameField = textfield
-        beatNameField?.placeholder = "..."
+        // beatNameField?.placeholder = "..."
     }
     
     @IBAction func displayLoadPickerView(_ sender: UIButton) {

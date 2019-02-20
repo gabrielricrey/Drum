@@ -461,7 +461,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L31-NE-6gM" userLabel="Top Container">
-                                <rect key="frame" x="36" y="20" width="740" height="46.333333333333343"/>
+                                <rect key="frame" x="36" y="20.000000000000004" width="740" height="46.333333333333343"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-Ar-mUA" userLabel="BPM -">
                                         <rect key="frame" x="0.0" y="3" width="240" height="40"/>
@@ -620,39 +620,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkP-ik-ZhH">
                                 <rect key="frame" x="712" y="97" width="50" height="160"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhn-NG-X60" userLabel="Save">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhn-NG-X60" userLabel="Save">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <color key="backgroundColor" red="0.16414438907591911" green="0.55169999599456787" blue="0.044455498238926125" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="efH-nx-cDN"/>
                                         </constraints>
-                                        <state key="normal" title="Save">
+                                        <state key="normal" image="save">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="displaySaveAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1xO-8D-uQ1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-vp-dfG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-vp-dfG">
                                         <rect key="frame" x="0.0" y="110" width="50" height="50"/>
-                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="WKR-JI-VCp"/>
                                         </constraints>
-                                        <state key="normal" title="Reset">
+                                        <state key="normal" image="reset">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2zf-nf-fvK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-Oe-sru" userLabel="Load">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-Oe-sru" userLabel="Load">
                                         <rect key="frame" x="0.0" y="55" width="50" height="50"/>
-                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="rCl-Ue-3cT"/>
                                         </constraints>
-                                        <state key="normal" title="Load">
+                                        <state key="normal" image="load">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -797,10 +794,13 @@
         <image name="hihat" width="307.33334350585938" height="266.66665649414062"/>
         <image name="hihatFilled" width="158" height="193"/>
         <image name="kick" width="307.33334350585938" height="266.66665649414062"/>
+        <image name="load" width="134" height="134"/>
         <image name="minus" width="55.333332061767578" height="17.333333969116211"/>
         <image name="paus" width="171.33332824707031" height="100.66666412353516"/>
         <image name="play" width="171.33332824707031" height="100.66666412353516"/>
         <image name="plus" width="55" height="55.333332061767578"/>
+        <image name="reset" width="134" height="134"/>
+        <image name="save" width="134" height="134"/>
         <image name="snare" width="307.33334350585938" height="266.66665649414062"/>
         <image name="snareFilled" width="158" height="193"/>
     </resources>

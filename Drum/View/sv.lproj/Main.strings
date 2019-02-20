@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "BPM"; ObjectID = "5X9-Ph-4Um"; */
+"5X9-Ph-4Um.text" = "BPM";
+
+/* Class = "UILabel"; text = "120"; ObjectID = "FMr-OB-zIf"; */
+"FMr-OB-zIf.text" = "120";
+
+/* Class = "UIButton"; normalTitle = "Load"; ObjectID = "fCL-Oe-sru"; */
+"fCL-Oe-sru.normalTitle" = "Load";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "v98-Uq-SAh"; */
+"v98-Uq-SAh.title" = "Klar";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "v9o-vp-dfG"; */
+"v9o-vp-dfG.normalTitle" = "Reset";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "xhn-NG-X60"; */
+"xhn-NG-X60.normalTitle" = "Save";

@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Drum
+
+  Created by Gabriel Richter Reynoso on 2019-02-20.
+  Copyright © 2019 Gabriel Richter Reynoso. All rights reserved.
+*/
+
+"enter_beat_name" = "Ange namnet på beatet";
+"cancel" = "Avbryt";
