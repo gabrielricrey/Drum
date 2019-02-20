@@ -63,6 +63,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         volumeView.layer.borderWidth = 1.0
         volumeView.layer.borderColor = UIColor.black.cgColor
         
+        pickerViewView.layer.borderWidth = 1.0
+        pickerViewView.layer.borderColor = UIColor.black.cgColor
         
         bpmDisplay.layer.borderWidth = 2
         bpmDisplay.layer.cornerRadius = 20
@@ -361,10 +363,31 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         switch track {
         case 50:
+            do {
+                audioPlayer1 = try AVAudioPlayer(contentsOf: soundUrl1!)
+                audioPlayer1.setVolume(volumeAudioPlayer1, fadeDuration: 0)
+            }
+            catch {
+                print(error)
+            }
             volumeSlider.value = audioPlayer1.volume
         case 51:
+            do {
+                audioPlayer2 = try AVAudioPlayer(contentsOf: soundUrl2!)
+                audioPlayer2.setVolume(volumeAudioPlayer2, fadeDuration: 0)
+            }
+            catch {
+                print(error)
+            }
             volumeSlider.value = audioPlayer2.volume
         case 52:
+            do {
+                audioPlayer3 = try AVAudioPlayer(contentsOf: soundUrl3!)
+                audioPlayer3.setVolume(volumeAudioPlayer3, fadeDuration: 0)
+            }
+            catch {
+                print(error)
+            }
             volumeSlider.value = audioPlayer3.volume
         default: return
         }
